@@ -12,7 +12,7 @@ class Graph:
     It's not very nice, but it could speed things up.
     """
 
-    def __init__(self, *a, concurrent_queries=1, **k):
+    def __init__(self, *a, concurrent_queries: int = 1, **k):
         self.executor = ThreadPoolExecutor(max_workers=concurrent_queries)
         self.graph = py2neo.Graph(*a, **k)
         self.graphs = Queue()
@@ -25,7 +25,7 @@ class Graph:
              and parent_attribute not in ['data', 'run', 'evaluate']}
         )
 
-    def data(self, *a, as_future=False, **k):
+    def data(self, *a, as_future: bool = False, **k):
         """
         Does the same things as py2neo.Graph.data, but can return Futures
         instead of results. Call .result() in the calling code to get
@@ -42,7 +42,7 @@ class Graph:
 
         return self.executor.submit(graph_data, *a, **k)
 
-    def run(self, *a, as_future=False, **k):
+    def run(self, *a, as_future: bool = False, **k):
         """
         Does the same things as py2neo.Graph.run, but can return Futures
         instead of results. Call .result() in the calling code to get
@@ -59,7 +59,7 @@ class Graph:
 
         return self.executor.submit(graph_run, *a, **k)
 
-    def evaluate(self, *a, as_future=False, **k):
+    def evaluate(self, *a, as_future: bool = False, **k):
         """
         Does the same things as py2neo.Graph.evaluate, but can return Futures
         instead of results. Call .result() in the calling code to get
