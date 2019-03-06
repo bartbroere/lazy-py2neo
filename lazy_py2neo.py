@@ -22,7 +22,7 @@ class Graph:
             {parent_attribute: getattr(self.graph, parent_attribute)
              for parent_attribute in dir(self.graph)
              if not parent_attribute.startswith('_')
-             and parent_attribute not in ['data', 'run']}
+             and parent_attribute not in ['data', 'run', 'evaluate']}
         )
 
     def data(self, *a, as_future=False, **k):

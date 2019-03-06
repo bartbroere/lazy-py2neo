@@ -8,7 +8,7 @@ dependencies = (
 
 setup(
     name='lazy_py2neo',
-    version='2019.2.8',
+    version='2019.3.6',
     author='Bart Broere',
     py_modules=['lazy_py2neo'],
     install_requires=dependencies,
